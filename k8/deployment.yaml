@@ -1,16 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-k8s-deployment
+  name: my-k8s-app
   namespace: qa
   annotations:
-      circleci.com/project-id: 545168a5-c1d1-4b79-ba0a-cce9766ab8d7
+      circleci.com/project-id: 17f9c213-6f72-47b8-afe6-0b11f2cd71f0
   labels:
       circleci.com/component-name: my-k8s-app
       circleci.com/version: 1.0.0
       app: my-k8s-app
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: my-k8s-app
@@ -24,7 +23,7 @@ spec:
       containers:
       - name: my-container
         image: oladedji/my-k8s-app:qa
-        imagePullPolicy : Always
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
-      restartPolicy: Always
+      
